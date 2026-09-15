@@ -1,173 +1,40 @@
 # Week-4-Web-Application-Penetration-Testing
-# 🔐 Mediroza General Hospital — Web Application Penetration Testing
+Yes — now I understand exactly what you mean.
 
-### Week 4 Cybersecurity Internship Project
+You want your GitHub project to **follow the same professional report style as the PDF you uploaded**: same kind of structure, headings, finding-by-finding format, risk ratings, evidence, attack chain, recommendations, and conclusion — but with **your name, your B082 details, and your actual work**. The PDF itself uses sections such as Executive Summary, Scope and Methodology, Tools Used, Findings and Proof of Exploitation, a summary table, individual findings, attack-chain summary, remediation, and conclusion.  
 
-**Researcher / Pentester:** Ufot Daraobong Esthiet  
-**Batch:** B082  
-**Training Program:** NetworkWalks  
-**Week:** 4  
-**Assessment Type:** Black-Box Web Application Penetration Test  
-**Target:** Mediroza General Hospital  
-**Environment:** Authorized Cybersecurity Training Lab
+One important point: the PDF contains **seven findings**, including metadata, the `/old/` backup, and staff/shareholder data. Your own write-up you gave me only clearly establishes the first three findings. I won't pretend you performed the additional steps unless you confirm you did them.
+
+So **this is the GitHub version I would make for you based on your actual findings, but styled after the PDF.**
 
 ---
 
-## 📌 Project Overview
+# PENETRATION TESTING REPORT
 
-This repository documents my Week 4 practical cybersecurity project completed during my training with NetworkWalks.
+## Mediroza General Hospital
 
-The project involved conducting a controlled **Web Application Penetration Test and Vulnerability Assessment** against the Mediroza General Hospital web application.
+### Web Application Security Assessment
 
-The assessment focused on identifying weaknesses within the application's publicly accessible areas, investigating the patient portal, analyzing authentication behavior, assessing the security of sensitive patient documents, and documenting the security impact of the findings.
-
-Rather than focusing only on identifying individual vulnerabilities, this practical helped me understand how several weaknesses can be connected together to create a larger security risk.
-
----
-
-# 🎯 Assessment Objectives
-
-The main objectives of this project were to:
-
-- Perform reconnaissance against the web application
-- Identify potentially exposed directories and resources
-- Investigate the patient portal
-- Assess the login functionality
-- Identify application security weaknesses
-- Investigate SQL-related errors
-- Demonstrate the impact of the identified vulnerability within the authorized lab
-- Access the assigned patient reports
-- Assess the protection applied to the PDF files
-- Evaluate the strength of the document password
-- Collect and organize evidence
-- Analyze the security impact of the findings
-- Provide appropriate remediation recommendations
+**Prepared by:** Ufot Daraobong Esthiet
+**Cybersecurity Mentor:** Waqas Karim, CCIE
+**Organisation:** NetworkWalks
+**Batch:** B082
+**Week:** 4 Capstone Project
+**Target:** `https://medirozahospital.com`
+**Assessment Type:** Black-Box Penetration Test
+**Classification:** Confidential / Educational Assessment
 
 ---
 
-# 🧪 Testing Approach
+# 1. Executive Summary
 
-I followed a progressive penetration-testing approach.
+I was assigned to conduct a black-box penetration test against the Mediroza General Hospital web application as part of my Week 4 cybersecurity practical with NetworkWalks.
 
-Instead of immediately attempting exploitation, I started by gathering information about the application and then used the information discovered during reconnaissance to determine where further investigation was appropriate.
+The objective of the assessment was to identify weaknesses within the web application, demonstrate the security impact of the identified vulnerabilities within the authorized training environment, access the confidential patient reports provided for the exercise, and assess the protection applied to the retrieved documents.
 
-The assessment followed this general workflow:
+I began the assessment from a black-box perspective, meaning that I approached the application without relying on internal information about its infrastructure.
 
-```text
-Reconnaissance
-      ↓
-Application Enumeration
-      ↓
-Patient Portal Investigation
-      ↓
-Vulnerability Identification
-      ↓
-Controlled Validation
-      ↓
-Sensitive Data Assessment
-      ↓
-PDF Security Assessment
-      ↓
-Risk Analysis
-      ↓
-Remediation Recommendations
-      ↓
-Documentation
-
-Absolutely. Below is the **complete GitHub README project**, written as your own Week 4 project and with a different structure from the sample.
-
-You can copy everything below into your GitHub repository as `README.md`.
-
-````markdown
-# 🔐 Mediroza General Hospital — Web Application Penetration Testing
-
-### Week 4 Cybersecurity Internship Project
-
-**Researcher / Pentester:** Ufot Daraobong Esthiet  
-**Batch:** B082  
-**Training Program:** NetworkWalks  
-**Week:** 4  
-**Assessment Type:** Black-Box Web Application Penetration Test  
-**Target:** Mediroza General Hospital  
-**Environment:** Authorized Cybersecurity Training Lab
-
----
-
-## 📌 Project Overview
-
-This repository documents my Week 4 practical cybersecurity project completed during my training with NetworkWalks.
-
-The project involved conducting a controlled **Web Application Penetration Test and Vulnerability Assessment** against the Mediroza General Hospital web application.
-
-The assessment focused on identifying weaknesses within the application's publicly accessible areas, investigating the patient portal, analyzing authentication behavior, assessing the security of sensitive patient documents, and documenting the security impact of the findings.
-
-Rather than focusing only on identifying individual vulnerabilities, this practical helped me understand how several weaknesses can be connected together to create a larger security risk.
-
----
-
-# 🎯 Assessment Objectives
-
-The main objectives of this project were to:
-
-- Perform reconnaissance against the web application
-- Identify potentially exposed directories and resources
-- Investigate the patient portal
-- Assess the login functionality
-- Identify application security weaknesses
-- Investigate SQL-related errors
-- Demonstrate the impact of the identified vulnerability within the authorized lab
-- Access the assigned patient reports
-- Assess the protection applied to the PDF files
-- Evaluate the strength of the document password
-- Collect and organize evidence
-- Analyze the security impact of the findings
-- Provide appropriate remediation recommendations
-
----
-
-# 🧪 Testing Approach
-
-I followed a progressive penetration-testing approach.
-
-Instead of immediately attempting exploitation, I started by gathering information about the application and then used the information discovered during reconnaissance to determine where further investigation was appropriate.
-
-The assessment followed this general workflow:
-
-```text
-Reconnaissance
-      ↓
-Application Enumeration
-      ↓
-Patient Portal Investigation
-      ↓
-Vulnerability Identification
-      ↓
-Controlled Validation
-      ↓
-Sensitive Data Assessment
-      ↓
-PDF Security Assessment
-      ↓
-Risk Analysis
-      ↓
-Remediation Recommendations
-      ↓
-Documentation
-````
-
----
-
-# 🔎 Phase 1 — Reconnaissance
-
-The first stage of the assessment involved identifying information that was publicly accessible from the target application.
-
-One of the first resources investigated was:
-
-```text
-robots.txt
-```
-
-The response revealed the following application paths:
+During the initial reconnaissance phase, I inspected the website's `robots.txt` file. This revealed several application directories, including:
 
 ```text
 /patient/
@@ -175,117 +42,13 @@ The response revealed the following application paths:
 /old/
 ```
 
-These paths provided useful information about areas of the application that could require further investigation.
+The discovery of these directories provided useful information about the structure of the application and helped guide further investigation.
 
-### Observation
+I then investigated the patient portal. During testing of the login functionality, the application returned a **MySQL syntax error** when unexpected input was supplied. This indicated that user input was reaching the backend database query without being handled securely and provided evidence of a potential SQL injection vulnerability.
 
-The presence of directories such as `/patient/` and `/staff/` can provide an attacker with information about the structure and functionality of an application.
+Within the controlled training environment, I was able to use the identified weakness to gain access to the restricted patient area.
 
-### Security Consideration
-
-Sensitive application areas should not rely on directory secrecy as a security control.
-
-Access to restricted functionality should always be protected through proper authentication and authorization mechanisms.
-
----
-
-# 🌐 Phase 2 — Application Enumeration
-
-After the initial reconnaissance, I investigated the available functionality of the web application.
-
-The patient portal became the primary area of interest because it appeared to contain functionality related to sensitive patient information.
-
-I examined how the login functionality responded to different inputs and observed the application's responses.
-
-During this stage, the application returned an SQL-related error instead of providing only a generic authentication failure.
-
----
-
-# 💉 Phase 3 — SQL Injection Identification
-
-## Finding: SQL Injection in Patient Portal
-
-**Severity:** 🔴 Critical
-
-**Category:** Injection
-
-**Affected Component:** Patient Portal Login
-
-### Description
-
-During the assessment of the patient portal, the application returned a **MySQL syntax error** while processing login input.
-
-The error indicated that user-supplied information was reaching the backend database query in an unsafe manner.
-
-Displaying database errors directly to users also revealed information about the technology being used by the application.
-
-This behavior provided an indication that the application's database interaction required further security investigation.
-
-### Evidence
-
-The evidence collected during the practical shows the patient portal returning a MySQL-related syntax error.
-
-**Evidence file:**
-
-```text
-evidence/03-sql-error.png
-```
-
-### Potential Impact
-
-If an SQL injection vulnerability exists in a production healthcare application, an attacker could potentially manipulate database queries and gain unauthorized access to sensitive information.
-
-Potentially affected information could include:
-
-* Patient records
-* Patient identifiers
-* Laboratory results
-* Authentication information
-* Other confidential database information
-
-### Risk Rating
-
-**Critical**
-
-The severity is based on the affected application area and the potential confidentiality impact associated with healthcare information.
-
-### Recommended Remediation
-
-The application should:
-
-* Use prepared statements and parameterized queries
-* Never build SQL queries directly from untrusted input
-* Implement server-side input validation
-* Apply least-privilege permissions to database accounts
-* Prevent raw database errors from being displayed to users
-* Log detailed errors securely on the server
-* Conduct additional security testing against application inputs
-
----
-
-# 🚪 Phase 4 — Access to the Patient Area
-
-Following identification and validation of the application weakness within the controlled training environment, I was able to access the restricted patient area.
-
-This allowed me to continue the assessment and investigate the patient documents provided as part of the exercise.
-
-The ability to reach sensitive information after compromising an authentication mechanism demonstrated the potential impact of the vulnerability.
-
----
-
-# 📄 Phase 5 — Sensitive Patient Report Exposure
-
-## Finding: Unauthorized Access to Patient Reports
-
-**Severity:** 🔴 Critical
-
-**Category:** Broken Access Control / Sensitive Information Disclosure
-
-### Description
-
-After accessing the restricted patient area, I located the patient reports assigned as part of the practical exercise.
-
-The assessment identified three PDF files:
+Three patient laboratory reports were then identified:
 
 ```text
 patient_report_1.pdf
@@ -293,430 +56,570 @@ patient_report_2.pdf
 patient_report_3.pdf
 ```
 
-The first report was successfully opened during the exercise and contained laboratory information.
+The reports contained sensitive patient information.
 
-The information visible in the report included items such as:
+I also assessed the password protection applied to the PDF documents. Using the NetworkWalks Hash Calculator, I processed the protected PDF and obtained a hash suitable for password analysis. The password was subsequently recovered successfully, demonstrating that the document's password protection was weak.
+
+The assessment therefore demonstrated that weaknesses in web application security and document protection can be combined to create a larger confidentiality risk.
+
+### Overall Assessment
+
+**Overall Risk: CRITICAL**
+
+The most significant concern is the potential exposure of sensitive healthcare information. In a real hospital environment, unauthorized access to patient records could have serious privacy, legal, operational, and reputational consequences.
+
+---
+
+# 2. Scope and Methodology
+
+## 2.1 Scope
+
+The assessment focused on the Mediroza General Hospital web application:
+
+**Target:**
+
+```text
+https://medirozahospital.com
+```
+
+The testing was performed as part of an authorized NetworkWalks cybersecurity training exercise.
+
+The assessment focused on:
+
+* Web application reconnaissance
+* Patient portal investigation
+* Authentication testing
+* SQL injection assessment
+* Patient report access
+* PDF security assessment
+* Password recovery testing
+
+The assessment was conducted within the defined educational environment.
+
+---
+
+## 2.2 Methodology
+
+I followed a structured approach during the assessment.
+
+### Phase 1 — Reconnaissance
+
+I began by gathering publicly accessible information about the application.
+
+The `robots.txt` file was inspected and revealed:
+
+```text
+/patient/
+/staff/
+/old/
+```
+
+These directories were recorded as potential areas for further investigation.
+
+---
+
+### Phase 2 — Application Enumeration
+
+I investigated the application functionality exposed through the discovered paths.
+
+The patient portal was identified as an important area because it provided access to functionality involving patient information.
+
+---
+
+### Phase 3 — Vulnerability Identification
+
+I tested the patient portal login functionality and observed how the application responded to different types of input.
+
+A MySQL syntax error was returned during testing.
+
+This indicated that the application was exposing backend database errors and that the login input required further security assessment.
+
+---
+
+### Phase 4 — Controlled Exploitation
+
+The identified SQL injection weakness was validated within the authorized training environment.
+
+The weakness allowed access to the restricted patient area.
+
+---
+
+### Phase 5 — Sensitive Data Assessment
+
+After gaining access to the patient area, I identified the three patient PDF reports provided as part of the exercise.
+
+I then assessed the protection applied to the reports.
+
+---
+
+### Phase 6 — PDF Password Assessment
+
+The first protected PDF was processed using the NetworkWalks Hash Calculator.
+
+The extracted hash was then used during password-recovery testing.
+
+The password was successfully recovered and subsequently used to open the protected document.
+
+---
+
+# 3. Tools Used
+
+The following tools and resources were used during the assessment:
+
+| Tool / Resource                   | Purpose                                                      |
+| --------------------------------- | ------------------------------------------------------------ |
+| **Kali Linux**                    | Penetration-testing environment                              |
+| **Web Browser**                   | Application interaction and investigation                    |
+| **cURL**                          | Retrieving web resources such as `robots.txt`                |
+| **NetworkWalks Hash Calculator**  | Processing the protected PDF and extracting a crackable hash |
+| **NetworkWalks Password Cracker** | Testing the extracted PDF hash                               |
+| **PDF Viewer**                    | Verifying the recovered password                             |
+| **GitHub**                        | Documentation and portfolio presentation                     |
+
+---
+
+# 4. Findings and Proof of Exploitation
+
+## 4.1 Summary Table
+
+| # | Vulnerability / Finding                | Location          | Risk        |
+| - | -------------------------------------- | ----------------- | ----------- |
+| 1 | SQL Injection in Patient Portal        | Patient Login     | 🔴 Critical |
+| 2 | Unauthorized Access to Patient Reports | Patient Reports   | 🔴 Critical |
+| 3 | Weak PDF Password Protection           | Patient PDF Files | 🟠 High     |
+
+---
+
+# 4.2 Finding 1 — SQL Injection in Patient Portal
+
+### Risk Rating: Critical
+
+**Location:** Patient Portal Login
+
+### Description
+
+SQL injection occurs when an application incorporates user-controlled input into database queries without properly separating the input from the SQL statement.
+
+During testing of the Mediroza patient portal, the login functionality returned a MySQL syntax error when unexpected input was supplied.
+
+The error revealed that the application was interacting directly with a MySQL database and was not handling the supplied input securely.
+
+This provided evidence that the login functionality was potentially vulnerable to SQL injection.
+
+### Steps Taken
+
+I first accessed the patient login page.
+
+I then tested the application's handling of user input.
+
+The application returned a database-related error instead of a generic authentication response.
+
+### Evidence
+
+**Figure 1 — Patient Portal Login**
+
+```text
+evidence/01-patient-login.png
+```
+
+**Figure 2 — MySQL Error**
+
+```text
+evidence/02-sql-error.png
+```
+
+### Impact
+
+A successful SQL injection vulnerability in a healthcare application could potentially allow an attacker to:
+
+* Bypass authentication
+* Access restricted functionality
+* Retrieve database information
+* Access patient records
+* Access laboratory information
+* Potentially compromise additional application data
+
+During this assessment, the vulnerability provided a path to the restricted patient area.
+
+### Recommendation
+
+The application should:
+
+* Use prepared statements
+* Use parameterized SQL queries
+* Implement server-side input validation
+* Apply least-privilege database permissions
+* Never display raw database errors to users
+* Log detailed errors securely on the server
+* Perform additional SQL injection testing across application inputs
+
+---
+
+# 4.3 Finding 2 — Unauthorized Access to Confidential Patient Reports
+
+### Risk Rating: Critical
+
+**Location:** Patient Reports Area
+
+### Description
+
+After validating the authentication weakness within the controlled training environment, I was able to access the restricted patient area.
+
+The portal contained three patient laboratory reports:
+
+```text
+patient_report_1.pdf
+patient_report_2.pdf
+patient_report_3.pdf
+```
+
+These documents contained sensitive healthcare information.
+
+### Steps Taken
+
+After gaining access to the patient area, I identified the available PDF reports and retrieved the files required by the exercise.
+
+### Evidence
+
+**Figure 3 — Patient Portal Reports**
+
+```text
+evidence/03-patient-reports.png
+```
+
+### Sensitive Information Observed
+
+The patient report contained information including:
 
 * Patient name
 * Patient ID
 * Date of birth
 * Laboratory information
 
-### Evidence
+### Impact
 
-Evidence was captured showing the patient report accessed during the assessment.
-
-```text
-evidence/04-patient-report.png
-```
-
-### Security Impact
-
-Healthcare information is highly sensitive.
-
-Unauthorized access to patient reports could potentially result in:
+Unauthorized access to medical information could result in:
 
 * Patient privacy violations
-* Exposure of medical information
+* Disclosure of medical information
 * Identity-related risks
 * Regulatory consequences
 * Reputational damage
 * Loss of patient trust
 
-### Risk Rating
+### Recommendation
 
-**Critical**
+Mediroza should:
 
-The finding is considered critical because unauthorized access to sensitive healthcare information was demonstrated within the training environment.
-
-### Recommended Remediation
-
-The application should:
-
-1. Enforce authorization checks on every request for patient information.
+1. Implement server-side authorization checks.
 2. Ensure users can only access records they are authorized to view.
-3. Use unpredictable identifiers for sensitive resources.
-4. Prevent direct access to patient files through predictable paths.
-5. Require authentication before accessing sensitive documents.
-6. Validate authorization on the server for every document request.
-7. Log access to sensitive patient records.
-8. Regularly perform access-control testing.
+3. Prevent direct access to sensitive files.
+4. Use secure document identifiers.
+5. Require authentication before returning patient documents.
+6. Validate authorization for every document request.
+7. Monitor access to sensitive records.
+8. Perform regular access-control testing.
 
 ---
 
-# 🔑 Phase 6 — PDF Password Security Assessment
+# 4.4 Finding 3 — Weak PDF Password Protection
 
-After retrieving the assigned patient reports, I examined the protection applied to the PDF files.
+### Risk Rating: High
 
-The first PDF was password protected.
+**Location:** Patient PDF Reports
 
-To assess the strength of the protection, I used the **NetworkWalks Hash Calculator** provided as part of the training resources.
+### Description
 
-The protected PDF was processed to obtain a crackable representation of its password protection.
+The patient reports were protected with PDF passwords.
+
+Although password protection had been applied, the password used for the first document was weak enough to be recovered during the authorized assessment.
+
+I used the **NetworkWalks Hash Calculator** to process the protected PDF and obtain a crackable representation of the password protection.
 
 The resulting hash was then tested using the available password-recovery functionality.
 
----
+### Steps Taken
 
-## 🧮 Hash Extraction
-
-The NetworkWalks Hash Calculator was used to process the protected PDF.
-
-The purpose of this step was to convert the PDF's password protection into a format that could be assessed using password-recovery tools.
-
-### Evidence
+The process followed was:
 
 ```text
-evidence/05-pdf-hash.png
+Protected PDF
+      ↓
+NetworkWalks Hash Calculator
+      ↓
+Extracted Hash
+      ↓
+Password Recovery
+      ↓
+Password Recovered
+      ↓
+PDF Opened Successfully
 ```
-
----
-
-# 🔓 Phase 7 — Password Recovery
-
-The extracted PDF hash was tested using the password-cracking functionality available during the practical.
-
-The password was successfully recovered.
 
 ### Result
 
+The password for the first PDF was successfully recovered as:
+
 ```text
-Password: 123456
+123456
 ```
 
 The recovered password was then used to open the protected PDF successfully.
 
 ### Evidence
 
+**Figure 4 — PDF Hash Extraction**
+
 ```text
-evidence/06-password-recovered.png
+evidence/04-pdf-hash.png
 ```
 
----
+**Figure 5 — Password Recovery**
 
-# ⚠️ Finding: Weak PDF Password Protection
+```text
+evidence/05-password-recovered.png
+```
 
-**Severity:** 🟠 High
+**Figure 6 — Opened Patient Report**
 
-**Category:** Weak Password / Insufficient Protection of Sensitive Data
+```text
+evidence/06-opened-report.png
+```
 
-### Description
+### Impact
 
-Although the patient report was protected using PDF encryption, the password protecting the document was extremely simple and predictable.
+The use of a predictable password significantly reduced the effectiveness of the PDF's protection.
 
-The successful recovery demonstrated that encryption alone does not guarantee strong protection when a weak password is used.
+If an attacker obtains an encrypted copy of a sensitive document, a weak password may allow the document's contents to be recovered.
 
-### Security Impact
+Because the document contained sensitive medical information, the potential confidentiality impact is significant.
 
-If an attacker obtains a copy of an encrypted sensitive document, a weak password can significantly reduce the effectiveness of the encryption.
+### Recommendation
 
-In a healthcare environment, this could potentially result in unauthorized disclosure of confidential medical information.
-
-### Risk Rating
-
-**High**
-
-The finding is rated High because the protected document contained sensitive information and the password was successfully recovered during the authorized assessment.
-
-### Recommended Remediation
-
-Organizations should:
+The organization should:
 
 * Use strong randomly generated passwords
 * Avoid predictable passwords
 * Avoid sequential numeric passwords
-* Never reuse passwords across sensitive documents
+* Never reuse passwords for sensitive documents
 * Use appropriate encryption mechanisms
-* Protect sensitive files through centralized access control
-* Review how sensitive documents are stored and distributed
-* Implement strong password-management policies
+* Apply centralized access controls
+* Protect sensitive documents both at rest and in transit
 
 ---
 
-# 🧩 Attack Chain
+# 5. Attack Chain Summary
 
-One of the most important lessons from this project was seeing how separate weaknesses could be connected.
-
-The assessment can be represented as:
+The assessment demonstrated the following attack path:
 
 ```text
 1. Reconnaissance
         ↓
-2. robots.txt Discovery
+2. robots.txt discovered
         ↓
-3. /patient/ Directory Identified
+3. /patient/ directory identified
         ↓
-4. Patient Portal Investigation
+4. Patient portal investigated
         ↓
-5. MySQL Error Observed
+5. MySQL error observed
         ↓
-6. SQL Injection Vulnerability Identified
+6. SQL injection identified
         ↓
-7. Restricted Patient Area Accessed
+7. Restricted patient area accessed
         ↓
-8. Patient Reports Located
+8. Three patient reports identified
         ↓
-9. Sensitive Information Exposed
+9. PDF protection assessed
         ↓
-10. PDF Encryption Assessed
+10. PDF hash extracted
         ↓
-11. PDF Hash Extracted
+11. Password successfully recovered
         ↓
-12. Weak Password Recovered
-        ↓
-13. Protected PDF Successfully Opened
+12. Protected patient report opened
 ```
 
-This demonstrates how multiple security weaknesses can increase the overall impact of an application compromise.
+The assessment demonstrated that vulnerabilities should not always be considered individually.
+
+A weakness in authentication can become significantly more serious when it provides access to sensitive documents, particularly when those documents are protected using weak passwords.
 
 ---
 
-# 📊 Vulnerability Summary
+# 6. Risk Analysis
 
-| ID      | Finding                            | Severity    | Security Impact                                       |
-| ------- | ---------------------------------- | ----------- | ----------------------------------------------------- |
-| VULN-01 | SQL Injection in Patient Portal    | 🔴 Critical | Authentication bypass / potential database compromise |
-| VULN-02 | Unauthorized Patient Report Access | 🔴 Critical | Exposure of sensitive healthcare information          |
-| VULN-03 | Weak PDF Password Protection       | 🟠 High     | Recovery of protected sensitive documents             |
+| Finding                            | Severity    | Potential Impact                                        |
+| ---------------------------------- | ----------- | ------------------------------------------------------- |
+| SQL Injection                      | 🔴 Critical | Authentication bypass and potential database compromise |
+| Unauthorized Patient Report Access | 🔴 Critical | Exposure of confidential healthcare information         |
+| Weak PDF Password                  | 🟠 High     | Recovery of protected medical documents                 |
 
----
+### Risk Rating Key
 
-# 🛠️ Tools & Resources Used
+🔴 **Critical** — Immediate remediation recommended
 
-| Tool / Resource                   | Purpose                                          |
-| --------------------------------- | ------------------------------------------------ |
-| **Kali Linux**                    | Penetration-testing environment                  |
-| **Web Browser**                   | Reconnaissance and web application interaction   |
-| **cURL**                          | Retrieving and inspecting web resources          |
-| **NetworkWalks Hash Calculator**  | Processing the protected PDF                     |
-| **NetworkWalks Password Cracker** | Password security assessment                     |
-| **PDF Viewer**                    | Verifying the recovered document                 |
-| **GitHub**                        | Project documentation and portfolio presentation |
+🟠 **High** — High-priority remediation recommended
+
+🟡 **Medium** — Remediation should be planned
+
+🟢 **Low** — Monitor and improve where appropriate
 
 ---
 
-# 🖼️ Evidence Collection
+# 7. Recommendations and Remediation
 
-All screenshots collected during the practical are organized inside the `evidence/` directory.
+## 7.1 Fix SQL Injection
 
-```text
-evidence/
-│
-├── 01-robots-txt.png
-├── 02-patient-portal.png
-├── 03-sql-error.png
-├── 04-patient-report.png
-├── 05-pdf-hash.png
-├── 06-password-recovered.png
-└── 07-retrieved-reports.png
-```
+The patient portal should use prepared statements or parameterized queries.
 
-### Evidence Description
-
-**01 — robots.txt**
-
-Shows the application directories discovered during reconnaissance.
-
-**02 — Patient Portal**
-
-Shows the patient portal identified during application enumeration.
-
-**03 — SQL Error**
-
-Shows the MySQL-related error returned by the application.
-
-**04 — Patient Report**
-
-Shows the patient laboratory report accessed during the exercise.
-
-**05 — PDF Hash Extraction**
-
-Shows the NetworkWalks Hash Calculator processing the protected PDF.
-
-**06 — Password Recovery**
-
-Shows the successful password-recovery result.
-
-**07 — Retrieved Reports**
-
-Shows the assigned patient report files identified during the exercise.
+User input should never be directly incorporated into SQL statements.
 
 ---
 
-# 🛡️ Remediation Plan
+## 7.2 Strengthen Authentication
 
-Based on the findings from the assessment, the following remediation priorities are recommended.
-
-## Priority 1 — Fix SQL Injection
-
-The patient portal should be reviewed and all database queries should use parameterized statements.
-
-User input should always be treated as untrusted.
+The login system should properly validate authentication attempts and prevent manipulation of database queries through user input.
 
 ---
 
-## Priority 2 — Strengthen Access Control
+## 7.3 Strengthen Access Control
 
-Authentication should not be the only security control.
+Authentication alone should not determine whether a user can access a patient record.
 
-The application must verify whether the authenticated user has permission to access each individual patient record.
-
----
-
-## Priority 3 — Protect Sensitive Documents
-
-Patient reports should not be stored in publicly accessible locations.
-
-Sensitive documents should be delivered through an authenticated application process that verifies authorization before returning the file.
+Every request for sensitive information should be authorized on the server.
 
 ---
 
-## Priority 4 — Improve Password Security
+## 7.4 Protect Patient Documents
 
-Predictable passwords such as sequential numbers should not be used to protect sensitive documents.
+Patient PDF files should not be directly accessible through predictable URLs or publicly accessible directories.
 
-Strong, randomly generated credentials should be used where document-level passwords are required.
-
----
-
-## Priority 5 — Disable Detailed Database Errors
-
-Raw database errors should never be displayed to users.
-
-Users should receive a generic error message while detailed technical information is securely logged on the server.
+Documents should be served through an authenticated application endpoint that verifies authorization before returning the file.
 
 ---
 
-## Priority 6 — Improve Security Monitoring
+## 7.5 Improve Password Security
 
-The application should monitor:
+Sensitive documents should not use simple passwords such as sequential numbers.
+
+Strong, randomly generated passwords should be used where document-level password protection is required.
+
+---
+
+## 7.6 Disable Detailed Database Errors
+
+The application should never expose raw MySQL errors to users.
+
+Instead, users should receive a generic error message while detailed technical errors are stored securely in server logs.
+
+---
+
+## 7.7 Implement Security Monitoring
+
+The organization should monitor:
 
 * Failed login attempts
 * Unusual authentication activity
-* Repeated requests for sensitive documents
+* Repeated requests for patient reports
 * Database errors
 * Requests to restricted directories
 * Suspicious access patterns
 
 ---
 
-## Priority 7 — Perform Security Retesting
+## 7.8 Conduct Regular Penetration Testing
 
-After remediation, a follow-up penetration test should be conducted to verify that the vulnerabilities have been properly resolved.
-
----
-
-# 📚 Key Lessons Learned
-
-This project gave me practical experience in several areas of cybersecurity.
-
-### 🔎 Reconnaissance
-
-I learned how seemingly small pieces of publicly accessible information can reveal useful details about an application's structure.
-
-### 💉 SQL Injection
-
-I gained a better understanding of how unsafe handling of user input can affect database-driven applications.
-
-### 🔐 Authentication & Authorization
-
-The practical showed me why applications need both secure authentication and strong authorization controls.
-
-### 📄 Sensitive Data Protection
-
-I learned that sensitive files require multiple layers of protection.
-
-### 🔑 Password Security
-
-The PDF exercise demonstrated how the use of a weak password can reduce the effectiveness of encryption.
-
-### 📝 Security Documentation
-
-I also learned the importance of documenting:
-
-* What was tested
-* What was discovered
-* How the finding was validated
-* What the impact could be
-* How the issue should be fixed
-* What evidence supports the finding
+After remediation, the application should undergo another security assessment to confirm that the identified vulnerabilities have been properly resolved.
 
 ---
 
-# 💭 Personal Reflection
+# 8. Evidence
 
-This project was one of the practical exercises that helped me better understand how cybersecurity concepts connect together.
+The evidence collected during the assessment should be organized as follows:
 
-Before this exercise, concepts such as reconnaissance, SQL injection, password security and access control could seem like separate topics.
+```text
+evidence/
+│
+├── 01-patient-login.png
+├── 02-sql-error.png
+├── 03-patient-reports.png
+├── 04-pdf-hash.png
+├── 05-password-recovered.png
+└── 06-opened-report.png
+```
 
-Working through the assessment helped me see how they can form part of one security assessment.
+### Evidence Mapping
 
-The biggest lesson I took from the project is that cybersecurity is not only about finding vulnerabilities.
-
-A good security professional should also be able to:
-
-**Identify → Understand → Validate → Analyze → Document → Recommend**
-
-This practical has motivated me to continue improving my skills in web application security, ethical hacking and vulnerability assessment.
-
----
-
-# 🏁 Conclusion
-
-My Week 4 cybersecurity internship project with NetworkWalks provided a practical introduction to web application penetration testing.
-
-During the assessment, I performed reconnaissance, investigated the patient portal, identified an SQL-related security weakness, demonstrated its impact within the authorized training environment, accessed the assigned patient reports, and assessed the password protection applied to one of the documents.
-
-The assessment demonstrated that security weaknesses can become more serious when they are chained together.
-
-The combination of insecure database input handling, insufficient access protection and weak document passwords created a significant confidentiality risk within the training scenario.
-
-This project strengthened my understanding of web application security and improved my ability to analyze technical findings and communicate them through professional cybersecurity documentation.
-
-I look forward to applying these lessons to future labs and continuing to develop my skills in cybersecurity.
+| Evidence                    | Description                                     |
+| --------------------------- | ----------------------------------------------- |
+| `01-patient-login.png`      | Patient portal login page                       |
+| `02-sql-error.png`          | MySQL error observed during testing             |
+| `03-patient-reports.png`    | Patient reports accessible after the compromise |
+| `04-pdf-hash.png`           | PDF hash extraction                             |
+| `05-password-recovered.png` | Successful password recovery                    |
+| `06-opened-report.png`      | Protected PDF successfully opened               |
 
 ---
 
-# 👨‍💻 Project Author
+# 9. Key Lessons Learned
+
+This assessment gave me practical experience in several areas of web application security.
+
+### Web Reconnaissance
+
+I learned how publicly accessible resources such as `robots.txt` can reveal useful information about an application's structure.
+
+### SQL Injection
+
+I gained practical understanding of how insecure handling of user input can expose database-driven applications to SQL injection.
+
+### Authentication & Authorization
+
+The assessment reinforced the difference between authentication and authorization and why both are important when protecting sensitive information.
+
+### Sensitive Data Protection
+
+I learned that sensitive healthcare information requires strong access controls and multiple layers of protection.
+
+### Password Security
+
+The PDF exercise demonstrated how weak passwords can reduce the effectiveness of encryption.
+
+### Vulnerability Chaining
+
+The most important lesson was seeing how multiple weaknesses can be connected to increase the overall impact of a compromise.
+
+---
+
+# 10. Conclusion
+
+This Week 4 assessment gave me practical experience conducting a black-box web application penetration test within an authorized cybersecurity training environment.
+
+I began with reconnaissance and discovered application paths through `robots.txt`. I then investigated the patient portal and identified a MySQL-related error that indicated an SQL injection vulnerability.
+
+The identified weakness provided access to the restricted patient area, where three confidential patient reports were located.
+
+I subsequently assessed the security of the PDF documents and successfully recovered the password protecting the first report. The recovered password allowed the protected document to be opened and verified.
+
+The exercise demonstrated how vulnerabilities in different parts of an application can be chained together to create a much larger security impact.
+
+My major takeaway from this assessment is that cybersecurity is not simply about finding vulnerabilities. It is also about understanding their impact, collecting evidence, documenting the findings clearly, and recommending practical remediation.
+
+This project has strengthened my interest in **web application security, ethical hacking, vulnerability assessment, and penetration testing**, and I look forward to applying what I have learned in future cybersecurity projects.
+
+---
+
+# 👨‍💻 Author
 
 **Ufot Daraobong Esthiet**
 
-Cybersecurity Trainee | Ethical Hacking | Footprinting | Scanning | Web Application Security
+**Cybersecurity Trainee | Ethical Hacking | Footprinting | Scanning | Web Application Security**
 
 **Training:** NetworkWalks
 **Batch:** B082
-**Project:** Week 4 — Web Application Penetration Testing
+**Week:** 4 Capstone Project
 
 ---
 
-## ⚠️ Portfolio Note
-
-This project was completed as part of an authorized cybersecurity training environment.
-
-The techniques and findings documented here were performed within the defined scope of the practical exercise.
-
-Sensitive information from the training environment should be redacted before publishing screenshots or reports publicly.
-
----
-
-# 🔐 Skills Demonstrated
-
-`Web Application Security`
-`Penetration Testing`
-`Reconnaissance`
-`SQL Injection Analysis`
-`Access Control Assessment`
-`Password Security`
-`PDF Security Assessment`
-`Vulnerability Assessment`
-`Risk Analysis`
-`Security Documentation`
-`Kali Linux`
-`GitHub`
-
-````
-
-### 📁 Your GitHub repository should look like this
+## 📂 Repository Structure
 
 ```text
 mediroza-web-application-pentest/
@@ -724,16 +627,25 @@ mediroza-web-application-pentest/
 ├── README.md
 │
 ├── evidence/
-│   ├── 01-robots-txt.png
-│   ├── 02-patient-portal.png
-│   ├── 03-sql-error.png
-│   ├── 04-patient-report.png
-│   ├── 05-pdf-hash.png
-│   ├── 06-password-recovered.png
-│   └── 07-retrieved-reports.png
+│   ├── 01-patient-login.png
+│   ├── 02-sql-error.png
+│   ├── 03-patient-reports.png
+│   ├── 04-pdf-hash.png
+│   ├── 05-password-recovered.png
+│   └── 06-opened-report.png
 │
 └── report/
-    └── Mediroza-Penetration-Testing-Report.pdf
-````
+    └── Mediroza-Penetration-Test-Report.pdf
+```
 
-**One important change before you make the repository public:** redact the patient name, patient ID, date of birth, medical/laboratory details, and other personal information from your screenshots. I also recommend **not publishing the recovered password (`123456`) in the public repository**; you can state that a weak password was successfully recovered without exposing the credential itself.
+---
+
+### ⚠️ Before you publish it
+
+Because this involves a hospital scenario and patient reports, **redact patient names, patient IDs, dates of birth, medical information, and other personal information from screenshots before putting them on a public GitHub repository.**
+
+Also, I would **not put the actual recovered password in the public repository**. In the public GitHub version, you can write:
+
+> *“A weak password was successfully recovered and verified.”*
+
+The PDF sample itself contains additional findings—username enumeration, PDF metadata, the `/old/` backup, and staff/shareholder information.  Those should only be added to **your** GitHub project if you actually performed and have evidence for those steps.
