@@ -4,16 +4,16 @@
 
 ## Mediroza General Hospital
 
-### Web Application Security Assessment
+#🔐 Mediroza General Hospital — Web Application Penetration Testing
+Week 4 Cybersecurity Internship Project
 
-**Prepared by:**Ufot Daraobong Esthiet**
-**Cybersecurity Mentor:**Waqas Karim, CCIE**
-**Organisation:**NetworkWalks**
-**Batch:**B082**
-**Week:**4 project
-**Target:**`https://medirozahospital.com`
-**Assessment Type:** Black-Box Penetration Test
-**Classification:** Confidential / Educational Assessment
+👤 Researcher / Pentester: Ufot Daraobong Esthiet
+🎓 Batch: B082
+🏢 Training Program: NetworkWalks
+📅 Week: 4
+🔎 Assessment Type: Black-Box Web Application Penetration Test
+🎯 Target: Mediroza General Hospital
+🌐 Scope: Authorized Training Environment
 
 ---
 
