@@ -4,11 +4,11 @@
 
 ## Mediroza General Hospital
 
-#🔐 Mediroza General Hospital — Web Application Penetration Testing
-Week 4 Cybersecurity Internship Project
 
-👤 Researcher / Pentester: Ufot Daraobong Esthiet
-🎓 Batch: B082
+## Week 4 Cybersecurity Internship Project
+
+## 👤 Researcher / Pentester: Ufot Daraobong Esthiet
+## 🎓 Batch: B082
 🏢 Training Program: NetworkWalks
 📅 Week: 4
 🔎 Assessment Type: Black-Box Web Application Penetration Test
