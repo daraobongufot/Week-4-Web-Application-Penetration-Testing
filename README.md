@@ -6,10 +6,10 @@
 
 ### Web Application Security Assessment
 
-**Prepared by:**Ufot Daraobong Esthiet
-**Cybersecurity Mentor:**Waqas Karim, CCIE
-**Organisation:**NetworkWalks
-**Batch:**B082
+**Prepared by:**Ufot Daraobong Esthiet**
+**Cybersecurity Mentor:**Waqas Karim, CCIE**
+**Organisation:**NetworkWalks**
+**Batch:**B082**
 **Week:**4 project
 **Target:**`https://medirozahospital.com`
 **Assessment Type:** Black-Box Penetration Test
@@ -607,36 +607,5 @@ This project has strengthened my interest in **web application security, ethical
 **Training:** NetworkWalks
 **Batch:** B082
 **Week:** 4 Capstone Project
-
----
-
-## 📂 Repository Structure
-
-```text
-mediroza-web-application-pentest/
-│
-├── README.md
-│
-├── evidence/
-│   ├── 01-patient-login.png
-│   ├── 02-sql-error.png
-│   ├── 03-patient-reports.png
-│   ├── 04-pdf-hash.png
-│   ├── 05-password-recovered.png
-│   └── 06-opened-report.png
-│
-└── report/
-    └── Mediroza-Penetration-Test-Report.pdf
-```
-
----
-
-### ⚠️ Before you publish it
-
-Because this involves a hospital scenario and patient reports, **redact patient names, patient IDs, dates of birth, medical information, and other personal information from screenshots before putting them on a public GitHub repository.**
-
-Also, I would **not put the actual recovered password in the public repository**. In the public GitHub version, you can write:
-
-> *“A weak password was successfully recovered and verified.”*
 
 The PDF sample itself contains additional findings—username enumeration, PDF metadata, the `/old/` backup, and staff/shareholder information.  Those should only be added to **your** GitHub project if you actually performed and have evidence for those steps.
