@@ -1,13 +1,4 @@
 # Week-4-Web-Application-Penetration-Testing
-Yes — now I understand exactly what you mean.
-
-You want your GitHub project to **follow the same professional report style as the PDF you uploaded**: same kind of structure, headings, finding-by-finding format, risk ratings, evidence, attack chain, recommendations, and conclusion — but with **your name, your B082 details, and your actual work**. The PDF itself uses sections such as Executive Summary, Scope and Methodology, Tools Used, Findings and Proof of Exploitation, a summary table, individual findings, attack-chain summary, remediation, and conclusion.  
-
-One important point: the PDF contains **seven findings**, including metadata, the `/old/` backup, and staff/shareholder data. Your own write-up you gave me only clearly establishes the first three findings. I won't pretend you performed the additional steps unless you confirm you did them.
-
-So **this is the GitHub version I would make for you based on your actual findings, but styled after the PDF.**
-
----
 
 # PENETRATION TESTING REPORT
 
@@ -15,12 +6,12 @@ So **this is the GitHub version I would make for you based on your actual findin
 
 ### Web Application Security Assessment
 
-**Prepared by:** Ufot Daraobong Esthiet
-**Cybersecurity Mentor:** Waqas Karim, CCIE
-**Organisation:** NetworkWalks
-**Batch:** B082
-**Week:** 4 Capstone Project
-**Target:** `https://medirozahospital.com`
+**Prepared by:**Ufot Daraobong Esthiet
+**Cybersecurity Mentor:**Waqas Karim, CCIE
+**Organisation:**NetworkWalks
+**Batch:**B082
+**Week:**4 project
+**Target:**`https://medirozahospital.com`
 **Assessment Type:** Black-Box Penetration Test
 **Classification:** Confidential / Educational Assessment
 
